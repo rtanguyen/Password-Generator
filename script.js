@@ -1,5 +1,3 @@
-// Assignment code here
-
 var lower = "abcdefghijklmnopqrstuvwxyz";
 var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "1234567890";
@@ -18,6 +16,7 @@ function writePassword() {
       "Input password length (must be least 8 characters and no more than 128 characters)"
     );
     lengthInput = parseInt(lengthPrompt);
+    console.log(lengthInput);
     checkInput();
   }
   // function lengthInput() {
@@ -26,7 +25,6 @@ function writePassword() {
   // var passwordText = document.querySelector("#password");
   // passwordText.value = password;
 
-  console.log(lengthInput);
   //CHECK LENGTH
   function checkInput() {
     if (lengthInput >= 8 && lengthInput <= 128) {
@@ -34,7 +32,7 @@ function writePassword() {
       criteriaPrompt();
     } else {
       window.alert("Invalid input. Please try again.");
-      lengthPrompt();
+      passwordLength();
     }
   }
 
