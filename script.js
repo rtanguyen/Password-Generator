@@ -19,9 +19,6 @@ function writePassword() {
   passwordLength();
   criteriaPrompt();
   checkCriteria();
-  // generatePassword();
-
-  console.log(password);
   var passwordText = document.querySelector("#password");
   passwordText.value = generatePassword();
 }
@@ -40,7 +37,6 @@ function writePassword() {
   function checkInput() {
     if (lengthInput >= 8 && lengthInput <= 128) {
       length = lengthInput;
-      // criteriaPrompt();
     } else {
       window.alert("Invalid input. Please try again.");
       passwordLength();
@@ -94,12 +90,12 @@ function writePassword() {
       criteriaPrompt();
     }
   }
-  // // GENERATE PASSWORD
+//GENERATES RANDOM CHARACTER
   function pickRandom() {
     return passwordCriteria[Math.floor(Math.random() * passwordCriteria.length)];
   }
 
-  //LOOP FOR PASSWORD
+  //LOOPS RANDOM CHARACTER FOR PASSWORD. 
   function generatePassword() {
   do {
   var passwordContainsLower = false
@@ -121,7 +117,7 @@ function writePassword() {
 
       password += newCharacter;
     }
-//check criteria 
+//CHECK CRITERIA SELECTIONS ARE INCLUDED IN PASSWORD
   var matchesCharcters = lowerConfirm === passwordContainsLower 
   && upperConfirm === passwordContainsUpper 
   && numbersConfirm === passwordContainsNumbers
