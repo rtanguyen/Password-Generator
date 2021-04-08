@@ -4,6 +4,12 @@ var numbers = "1234567890";
 var specialChar = '~!@#$%^&*()_+{}":?><;.,';
 var length = "";
 var passwordCriteria = "";
+var password = "";
+var lengthInput = "";
+var lowerConfirm = "";
+var upperConfirm = "";
+var numbersConfirm = "";
+var spCharConfirm = "";
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -13,7 +19,12 @@ function writePassword() {
   passwordLength();
   criteriaPrompt();
   checkCriteria();
-  generatePassword();
+  // generatePassword();
+
+  console.log(password);
+  var passwordText = document.querySelector("#password");
+  passwordText.value = generatePassword();
+}
 
   //USER INPUT FUNCTION LENGTH
   function passwordLength() {
@@ -37,12 +48,6 @@ function writePassword() {
   }
 
   // ADD CRITERIA
-
-  var lowerConfirm = "";
-  var upperConfirm = "";
-  var numbersConfirm = "";
-  var spCharConfirm = "";
-
   function criteriaPrompt() {
     var addCriteria = "";
     window.alert(
@@ -91,23 +96,39 @@ function writePassword() {
   }
   // // GENERATE PASSWORD
   function pickRandom() {
-    return passwordCriteria(
-      Math.floor(Math.random() * passwordCriteria.length)
-    );
+    return passwordCriteria[Math.floor(Math.random() * passwordCriteria.length)];
   }
 
   //LOOP FOR PASSWORD
   function generatePassword() {
+  do {
+  var passwordContainsLower = false
+  var passwordContainsUpper = false
+  var passwordContainsNumbers = false
+  var passwordContainsSpChar = false
+  password = ""
     for (var i = 0; i < length; i++) {
-      pickRandom();
-      password += generatePassword();
+      var newCharacter = pickRandom();
+      if (lower.includes(newCharacter)) {
+        passwordContainsLower = true
+      } else if(upper.includes(newCharacter)) {
+        passwordContainsUpper = true
+      } else if(numbers.includes(newCharacter)) {
+        passwordContainsNumbers = true
+      }else if(specialChar.includes(newCharacter)) {
+        passwordContainsSpChar = true
+      } 
+
+      password += newCharacter;
     }
+//check criteria 
+  var matchesCharcters = lowerConfirm === passwordContainsLower 
+  && upperConfirm === passwordContainsUpper 
+  && numbersConfirm === passwordContainsNumbers
+  && spCharConfirm === passwordContainsSpChar
+  } while(!matchesCharcters)
+  return password;
   }
-  var password = "";
-  console.log(password);
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
